@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio Sertifikat | Muhammad David Aryanto</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
@@ -133,23 +132,35 @@
       font-size: 0.95rem;
     }
 
-    .view-btn {
-      background: transparent;
+    .certificate-link {
       color: var(--primary);
-      border: 1px solid var(--primary);
+      text-decoration: none;
       padding: 0.8rem 1.5rem;
+      border: 1px solid var(--primary);
       border-radius: 25px;
-      cursor: pointer;
       transition: all 0.3s ease;
       font-weight: 500;
-      width: auto;
       display: inline-block;
     }
 
-    .view-btn:hover {
+    .certificate-link:hover {
       background: var(--primary);
       color: var(--bg-dark);
       transform: scale(1.05);
+    }
+
+    /* Certificate Image Preview */
+    .certificate-preview {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .certificate-preview:hover {
+      transform: scale(1.02);
     }
 
     /* Footer */
@@ -226,21 +237,6 @@
         padding: 1.5rem;
       }
     }
-
-    /* Custom SweetAlert Styles */
-    .swal2-popup {
-      background: var(--bg-card) !important;
-      border-radius: 20px !important;
-    }
-
-    .swal2-title, .swal2-html-container {
-      color: var(--text-primary) !important;
-    }
-
-    .swal2-confirm {
-      background: var(--primary) !important;
-      border-radius: 25px !important;
-    }
   </style>
 </head>
 <body>
@@ -249,7 +245,7 @@
     <section class="profile">
       <img src="Anime.png" alt="Muhammad David Aryanto">
       <h1>Muhammad David Aryanto</h1>
-      <p>Web Developer & Digital Marketing Specialist</p>
+      <p>Website Developer & Digital Marketing Specialist</p>
     </section>
 
     <!-- Certificates Section -->
@@ -258,37 +254,40 @@
       <div class="certificate">
         <i class="fas fa-code icon"></i>
         <h2>Introduction to HTML</h2>
+        <img src="sertifikat-html.jpg" alt="HTML Certificate Preview" class="certificate-preview">
         <p>Membangun fondasi pengembangan web modern dengan pemahaman mendalam HTML5 dan semantic markup.</p>
-        <button class="view-btn" onclick="showCertificate('Introduction to HTML', 'sertifikat-html.jpg')">
+        <a href="sertifikat-html.jpg" target="_blank" class="certificate-link">
           Lihat Sertifikat
-        </button>
+        </a>
       </div>
 
       <!-- Certificate 2 -->
       <div class="certificate">
         <i class="fas fa-laptop-code icon"></i>
         <h2>Web Development</h2>
+        <img src="sertifikat-web.html" alt="Web Development Certificate Preview" class="certificate-preview">
         <p>Pengembangan aplikasi web full-stack dengan teknologi modern dan best practices industri.</p>
-        <button class="view-btn" onclick="showCertificate('Web Development', 'sertifikat-web.jpg')">
+        <a href="sertifikat-web.jpg" target="_blank" class="certificate-link">
           Lihat Sertifikat
-        </button>
+        </a>
       </div>
 
       <!-- Certificate 3 -->
       <div class="certificate">
         <i class="fas fa-bullhorn icon"></i>
         <h2>Social Media Marketing with AI</h2>
+        <img src="sertifikat-smm-ai.jpg" alt="Social Media Marketing Certificate Preview" class="certificate-preview">
         <p>Implementasi strategi marketing digital dengan bantuan AI untuk hasil yang optimal.</p>
-        <button class="view-btn" onclick="showCertificate('Social Media Marketing with AI', 'sertifikat-smm-ai.jpg')">
+        <a href="sertifikat-smm-ai.jpg" target="_blank" class="certificate-link">
           Lihat Sertifikat
-        </button>
+        </a>
       </div>
     </section>
 
     <!-- Footer -->
     <footer>
       <div class="social-links">
-        <a href="https://davidportofolio.vercel.app/" target="_blank" title="Portfolio">
+        <a href="https://web.davidaryanto.xyz" target="_blank" title="Portfolio">
           <i class="fas fa-globe"></i>
         </a>
         <a href="#" target="_blank" title="LinkedIn">
@@ -300,22 +299,5 @@
       </div>
     </footer>
   </div>
-
-  <script>
-    function showCertificate(title, image) {
-      Swal.fire({
-        title: title,
-        imageUrl: image,
-        imageWidth: 600,
-        imageHeight: 400,
-        imageAlt: 'Sertifikat ' + title,
-        showCloseButton: true,
-        confirmButtonText: 'Tutup',
-        background: '#1e293b',
-        color: '#f8fafc',
-        confirmButtonColor: '#3b82f6'
-      });
-    }
-  </script>
 </body>
 </html>
