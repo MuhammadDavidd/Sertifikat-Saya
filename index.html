@@ -3,187 +3,301 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sertifikat: Muhammad David Aryanto #1</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <!-- SweetAlert -->
+  <title>Portfolio Sertifikat | Muhammad David Aryanto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
+    :root {
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --primary: #3b82f6;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --gradient: linear-gradient(135deg, #1e293b, #0f172a);
+    }
+
+    * {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      color: #333333;
-      padding: 20px;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
     }
 
     .container {
-      max-width: 768px;
+      max-width: 1200px;
       margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    /* Profile Section */
+    .profile {
       text-align: center;
+      margin-bottom: 5rem;
+      position: relative;
     }
 
-    header h1 {
-      font-size: 2rem;
-      color: #ff8c42;
-      margin-bottom: 10px;
+    .profile::after {
+      content: '';
+      position: absolute;
+      bottom: -2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
     }
 
-    header p {
-      font-size: 1rem;
-      color: #555555;
+    .profile img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
+      border: 3px solid var(--primary);
+      padding: 5px;
     }
 
-    .certificate-list {
-      margin-top: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .certificate-item {
-      background-color: #fdfdfd;
-      border: 1px solid #ebebeb;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: left;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .certificate-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-    }
-
-    .certificate-item .certificate-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 15px;
-    }
-
-    .certificate-item .icon {
+    .profile h1 {
       font-size: 2.5rem;
-      color: #ff8c42;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, var(--primary), #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .certificate-item h2 {
-      font-size: 1.2rem;
-      margin: 0;
-      color: #333333;
+    .profile p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
     }
 
-    .certificate-item p {
-      font-size: 0.9rem;
-      color: #777777;
-      margin-top: 8px;
+    /* Certificate Section */
+    .certificates {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 1rem;
     }
 
-    .certificate-item .btn-view {
-      display: block;
+    .certificate {
+      background: var(--gradient);
+      padding: 2rem;
+      border-radius: 20px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .certificate::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      margin-top: 20px;
-      padding: 12px 20px;
-      border: none;
-      background-color: #ff8c42;
-      color: #ffffff;
-      font-size: 0.9rem;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 600;
-      text-align: center;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
 
-    .certificate-item .btn-view:hover {
-      background-color: #e57b37;
+    .certificate:hover::before {
+      opacity: 1;
+    }
+
+    .certificate:hover {
+      transform: translateY(-10px);
+    }
+
+    .certificate .icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .certificate h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .certificate p {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .view-btn {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      width: auto;
+      display: inline-block;
+    }
+
+    .view-btn:hover {
+      background: var(--primary);
+      color: var(--bg-dark);
       transform: scale(1.05);
     }
 
+    /* Footer */
     footer {
-      margin-top: 30px;
-      font-size: 0.85rem;
-      color: #999999;
-      line-height: 1.6;
+      margin-top: 5rem;
+      text-align: center;
+      color: var(--text-secondary);
     }
 
-    footer a {
-      color: #ff8c42;
-      text-decoration: none;
-      font-weight: bold;
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    .social-links a {
+      color: var(--text-secondary);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* Animations */
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .certificate {
+      animation: slideUp 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    .certificate:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .certificate:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem 1rem;
+      }
+
+      .profile h1 {
+        font-size: 2rem;
+      }
+
+      .profile img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .certificates {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .certificate {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Custom SweetAlert Styles */
+    .swal2-popup {
+      background: var(--bg-card) !important;
+      border-radius: 20px !important;
+    }
+
+    .swal2-title, .swal2-html-container {
+      color: var(--text-primary) !important;
+    }
+
+    .swal2-confirm {
+      background: var(--primary) !important;
+      border-radius: 25px !important;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Header -->
-    <header>
-      <h1><i class="fa fa-certificate" aria-hidden="true"></i></h1>
-      <p>Haii, saya <b>Muhammad David Aryanto</b>. Inilah daftar sertifikat pelatihan saya dalam bidang teknologi dan pemasaran.</p>
-    </header>
+    <!-- Profile Section -->
+    <section class="profile">
+      <img src="/api/placeholder/150/150" alt="Muhammad David Aryanto">
+      <h1>Muhammad David Aryanto</h1>
+      <p>Web Developer & Digital Marketing Specialist</p>
+    </section>
 
-    <!-- Certificate List -->
-    <main>
-      <div class="certificate-list">
-        <!-- Sertifikat 1 -->
-        <div class="certificate-item">
-          <div class="certificate-header">
-            <i class="fas fa-code icon"></i>
-            <div>
-              <h2>Introduction to HTML</h2>
-              <p>Pemahaman dasar tentang struktur web menggunakan HTML.</p>
-            </div>
-          </div>
-          <button class="btn-view" onclick="showCertificate('Introduction to HTML', 'sertifikat-html.jpg')">
-            Lihat Sertifikat
-          </button>
-        </div>
-
-        <!-- Sertifikat 2 -->
-        <div class="certificate-item">
-          <div class="certificate-header">
-            <i class="fas fa-laptop-code icon"></i>
-            <div>
-              <h2>Web Development</h2>
-              <p>Keterampilan membangun website dari desain hingga deploy.</p>
-            </div>
-          </div>
-          <button class="btn-view" onclick="showCertificate('Web Development', 'sertifikat-web.jpg')">
-            Lihat Sertifikat
-          </button>
-        </div>
-
-        <!-- Sertifikat 3 -->
-        <div class="certificate-item">
-          <div class="certificate-header">
-            <i class="fas fa-bullhorn icon"></i>
-            <div>
-              <h2>Social Media Marketing with AI</h2>
-              <p>Menggunakan AI untuk pemasaran media sosial yang efektif.</p>
-            </div>
-          </div>
-          <button class="btn-view" onclick="showCertificate('Social Media Marketing with AI', 'sertifikat-smm-ai.jpg')">
-            Lihat Sertifikat
-          </button>
-        </div>
+    <!-- Certificates Section -->
+    <section class="certificates">
+      <!-- Certificate 1 -->
+      <div class="certificate">
+        <i class="fas fa-code icon"></i>
+        <h2>Introduction to HTML</h2>
+        <p>Membangun fondasi pengembangan web modern dengan pemahaman mendalam HTML5 dan semantic markup.</p>
+        <button class="view-btn" onclick="showCertificate('Introduction to HTML', 'sertifikat-html.jpg')">
+          Lihat Sertifikat
+        </button>
       </div>
-    </main>
+
+      <!-- Certificate 2 -->
+      <div class="certificate">
+        <i class="fas fa-laptop-code icon"></i>
+        <h2>Web Development</h2>
+        <p>Pengembangan aplikasi web full-stack dengan teknologi modern dan best practices industri.</p>
+        <button class="view-btn" onclick="showCertificate('Web Development', 'sertifikat-web.jpg')">
+          Lihat Sertifikat
+        </button>
+      </div>
+
+      <!-- Certificate 3 -->
+      <div class="certificate">
+        <i class="fas fa-bullhorn icon"></i>
+        <h2>Social Media Marketing with AI</h2>
+        <p>Implementasi strategi marketing digital dengan bantuan AI untuk hasil yang optimal.</p>
+        <button class="view-btn" onclick="showCertificate('Social Media Marketing with AI', 'sertifikat-smm-ai.jpg')">
+          Lihat Sertifikat
+        </button>
+      </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-      Dibuat oleh Muhammad David Aryanto. 
-      <br>
-      <i class="fa fa-line-chart" aria-hidden="true"></i> 
-      <a href="https://davidportofolio.vercel.app/" target="_blank">
-        Lihat Portofolio Saya</a>
+      <div class="social-links">
+        <a href="https://davidportofolio.vercel.app/" target="_blank" title="Portfolio">
+          <i class="fas fa-globe"></i>
+        </a>
+        <a href="#" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="#" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
     </footer>
   </div>
 
@@ -191,20 +305,17 @@
     function showCertificate(title, image) {
       Swal.fire({
         title: title,
-        text: 'Ini adalah sertifikat: ' + title,
         imageUrl: image,
-        imageWidth: 400,
+        imageWidth: 600,
+        imageHeight: 400,
         imageAlt: 'Sertifikat ' + title,
-        confirmButtonColor: '#ff8c42'
+        showCloseButton: true,
+        confirmButtonText: 'Tutup',
+        background: '#1e293b',
+        color: '#f8fafc',
+        confirmButtonColor: '#3b82f6'
       });
     }
   </script>
 </body>
 </html>
-
-
-
-
-
-        <!-- Dibuat Oleh Muhammad David Aryanto | web ini dibuat sendiri tanpa template | 100% buatan sendiri  -->
-        
